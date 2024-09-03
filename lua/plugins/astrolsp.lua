@@ -10,16 +10,16 @@ return {
   opts = {
     -- Configuration table of features provided by AstroLSP
     features = {
-      autoformat = true, -- enable or disable auto formatting on start
-      codelens = true, -- enable/disable codelens refresh on start
-      inlay_hints = true, -- enable/disable inlay hints on start
+      autoformat = true,      -- enable or disable auto formatting on start
+      codelens = true,        -- enable/disable codelens refresh on start
+      inlay_hints = true,     -- enable/disable inlay hints on start
       semantic_tokens = true, -- enable/disable semantic token highlighting
     },
     -- customize lsp formatting options
     formatting = {
       -- control auto formatting on save
       format_on_save = {
-        enabled = true, -- enable or disable format on save globally
+        enabled = true,     -- enable or disable format on save globally
         allow_filetypes = { -- enable format on save for specified filetypes only
           -- "go",
         },
@@ -43,6 +43,36 @@ return {
     -- customize language server configuration options passed to `lspconfig`
     ---@diagnostic disable: missing-fields
     config = {
+      lua_ls = {
+        ettings = {
+          Lua = {
+            runtime = {
+              version = "LuaJIT",
+              path = {
+                "?/init.lua",
+                "?.lua",
+              },
+            },
+            workspace = {
+              library = {
+                ["/usr/share/nvim/runtime/lua"] = true,
+                ["/usr/share/nvim/runtime/lua/lsp"] = true,
+                ["/usr/share/awesome/lib"] = true,
+              },
+            },
+            completion = {
+              enable = true,
+            },
+            diagnostics = {
+              enable = true,
+              globals = { "vim", "awesome", "client", "root" },
+            },
+            telemetry = {
+              enable = false,
+            },
+          },
+        },
+      },
       -- clangd = { capabilities = { offsetEncoding = "utf-8" } },
     },
     -- customize how language servers are attached
