@@ -21,3 +21,4 @@ vim.cmd [[ function OpenMarkdownPreview (url)
 vim.cmd [[hi LineNr guifg=#888888]]
 
 vim.g.mkdp_browserfunc = "OpenMarkdownPreview"
+vim.opt.conceallevel = 1
